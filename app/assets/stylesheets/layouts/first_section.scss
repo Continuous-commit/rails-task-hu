@@ -1,0 +1,149 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}
+
+h2 {
+  background-color: greenyellow;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.box {
+  width: 450px;
+  height: 480px;
+  margin: 60px auto 0;
+  border-radius: 4px;
+  border: 1px #ddd solid;
+}
+
+.box-inner {
+  padding: 20px 26px;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  padding-bottom: 4px;
+}
+
+.n-field {
+  margin-bottom: 13px;
+}
+
+.e-field {
+  margin-bottom: 13px;
+}
+
+.p-field {
+  margin-bottom: 13px;
+}
+
+.cp-field {
+  margin-bottom: 26px;
+}
+
+label {
+  font-weight: 700;
+  font-size: 13px;
+  padding-left: 2px;
+  padding-bottom: 2px;
+}
+
+.form {
+  border-style: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 31px;
+  border: 1px solid #a6a6a6;
+  box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
+  border-radius: 3px;
+  padding: 0 7px;
+}
+
+.actions {
+  margin-bottom: 26px;
+}
+
+.button {
+  width: 100%;
+  height: 31px;
+  background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
+  border-radius: 3px;
+  border: 1px #a88734 solid;
+  margin-bottom: 22px;
+}
+
+.button:hover {
+  cursor: pointer;
+  background: #f0c14b;
+}
+
+.github-button {
+  display: block;
+  width: 100%;
+  height: 31px;
+  font-size: 13px;
+  color: #111;
+  line-height: 31px;
+  text-align: center;
+  background: linear-gradient(to bottom,#f7f8fa,#e7e9ec);
+  border-radius: 3px;
+  border: 1px #a2a6ac solid;
+}
+
+.github-button:hover {
+  cursor: pointer;
+  background: grey;
+}
+
+.sign-up p {
+  text-align: center;
+  font-size: 15px;
+  color: #767676;
+  margin-bottom: 14px;
+}
+
+.box-newusr p span {
+  text-decoration: line-through;
+  text-decoration-color: #e7e7e7;
+}
+
+.to-signup-link {
+  display: block;
+  width: 100%;
+  height: 31px;
+  font-size: 13px;
+  color: #111;
+  line-height: 31px;
+  text-align: center;
+  background: linear-gradient(to bottom,#f7f8fa,#e7e9ec);
+  border-radius: 3px;
+  border: 1px #a2a6ac solid;
+}
+
+.to-signup-link:hover {
+  cursor: pointer;
+  background: grey;
+}
+
+.login-link {
+  display: block;
+  width: 100%;
+  height: 31px;
+  font-size: 13px;
+  color: #111;
+  line-height: 31px;
+  text-align: center;
+  background: linear-gradient(to bottom,#f7f8fa,#e7e9ec);
+  border-radius: 3px;
+  border: 1px #a2a6ac solid;
+}
+
+.login-link:hover {
+  cursor: pointer;
+  background: grey;
+}

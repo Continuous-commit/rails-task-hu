@@ -1,0 +1,27 @@
+.box
+  .box-inner
+    h2
+      | Welcome to Happiness Chain !
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+
+      .e-field
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "info@example.com", class: 'form'
+
+      .p-field
+        = f.label :password
+        = f.password_field :password, autocomplete: "current-password", placeholder: "password", class: 'form'
+
+        - if devise_mapping.rememberable?
+          .field
+            = f.check_box :remember_me, class: 'check-box'
+            = f.label :remember_me
+
+      .actions
+        = f.submit "ログイン", class: 'button'
+        br
+        = link_to "Githubでサインイン", '#', class: 'github-button'
+        br 
+        .sign-up 
+          p ▼まだ会員登録してない方はこちらから新規登録▼
+          = render "devise/shared/links", class: 'signup-button'
