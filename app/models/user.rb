@@ -25,6 +25,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_one :profile, dependent: :destroy
+  has_many :tweets, dependent: :destroy
 
   delegate :name, :profile_text, :image, to: :profile, allow_nil: true
 
