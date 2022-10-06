@@ -1,0 +1,28 @@
+.error-message
+  = render "devise/shared/error_messages", resource: resource
+
+.box
+  .box-inner
+    h2 
+      | Sign Up !
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+
+      .e-field
+        = f.label :email
+        br
+        = f.email_field :email, autocomplete: "email", placeholder: "info@example.com", class: 'form'
+
+      .p-field
+        = f.label :password
+        br
+        = f.password_field :password, autocomplete: "new-password", placeholder: "password", class: 'form'
+
+      .cp-field
+        = f.label :password_confirmation
+        br
+        = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "password", class: 'form'
+
+      .actions
+        = f.submit "登録", class: 'button'
+        br
+        = render "devise/shared/links"
