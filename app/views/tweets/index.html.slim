@@ -1,1 +1,29 @@
+nav.navbar-header
+  h1 Happiness Chain
 
+- if user_signed_in?
+  .logout-bar
+    = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'logout-link'
+
+.content-wrapper
+  .content 
+    - if @tweets.any?
+      ul.tweets-list
+        - @tweets.each do |tweet|
+          li.media
+            .to-profile
+              h5.tweet-user
+                = link_to tweet.user.name, profile_path(tweet.user)
+            .tweet-text
+              = link_to simple_format(tweet.text), '#'
+
+  - if user_signed_in?
+    .profile 
+      .prof_img
+      .user_name
+        = link_to current_user.name, profile_path(current_user), class: "name"
+      .btn-submit
+        = link_to 'つぶやく', new_tweet_path, class: 'post-link'
+  - else
+    .login-btn
+      = link_to 'ログイン', new_user_session_path, class: 'login-link'
