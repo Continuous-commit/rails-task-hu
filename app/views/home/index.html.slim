@@ -8,11 +8,16 @@ nav.navbar-header
 
 .content-wrapper
   .content 
-    - (1..10).each
-      .img 
-      .tweete
-        ul
-          li テキストテキストテキストテキスト
+    - if @tweets.any?
+      ul.tweets-list
+        - @tweets.each do |tweet|
+          li.media
+            .to-profile
+              a.user-mention @
+              h5.tweet-user
+                = link_to tweet.user.name, profile_path(tweet.user)
+            .tweet-text
+              = link_to simple_format(tweet.text), '#'
 
   - if user_signed_in?
     .profile 

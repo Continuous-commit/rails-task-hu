@@ -13,8 +13,8 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = current_user.tweet.build(tweet_params)
-    if @profile.save
+    @tweet = current_user.tweets.build(tweet_params)
+    if @tweet.save
       redirect_to root_path, notice: "ツイートを作成しました"
     else
       render new_tweet_path, notice: "ツイートの投稿に失敗しました"

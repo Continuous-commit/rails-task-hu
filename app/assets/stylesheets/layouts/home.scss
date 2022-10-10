@@ -10,12 +10,12 @@
   display: flex;
   position: fixed; // スクロールしても表示変わらない
   width: 100%;
-}
 
   h1 {
   font-size: 50px;
   margin: 0 auto;
   display: flex;
+  }
 }
 
 .content-wrapper {
@@ -29,35 +29,52 @@
     flex-flow: column;
     justify-content: center;
     width: 650px;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
 
-    .img {
-      background-color: peachpuff;
-      width: 40px;
-      height: 40px;
-      margin-top: 7px;
-      margin-left: 38px;
-      border-radius: 50%;
-    }
-    .tweete {
-      width: 60%;
-      margin: 6px auto;
-      justify-content: center;
+    .tweets-list {
+      float:left;
+      position:relative;
+      margin-top: 12px;
+      list-style-type: none;
 
-      ul {
-        padding: 0;
-        list-style-type: none;
+      li {
+        width: 95%;
+        background-color: pink;
+        border: 0.5px solid;
+        border-radius: 2px;
+        text-align: center;
+        margin: 6px;
 
-        li {
-          background-color: pink;
-          border: 0.5px solid;
-          border-radius: 2px;
-          text-align: center;
-          margin: 6px;
+        
+        
+        .to-profile {
+          display: flex;
+          padding: 0 5px;
+
+          .tweet-user {
+            text-align: center;
+            background-color:greenyellow;
+            opacity: 0.9;
+            border-radius: 10px;
+          }
+          
+          a {
+            padding: 5px;
+          }
+        
+          :hover {
+            opacity: 1;
+          }
         }
-      }
+        .tweet-text {
+          text-align: center;
+          padding: 5px 5px 5px 15px;
+          font-size: 14.5px;
+        }
+      }   
     }
   }
+
   .profile {
     right: 30;
     border: 1px solid;
