@@ -1,0 +1,15 @@
+.content-wrapper
+  .contents-block 
+    - @tweets.each do |tweet|
+      .content
+        .twite
+          = link_to tweet.text, tweet_path(tweet.id), class: "text"
+
+  .profile
+    - if user_signed_in?
+      .prof
+        = image_tag 'default.jpg', class: 'prof_img'
+      .user_name
+        = link_to current_user.name, profile_path(current_user), class: "name"
+    .btn 
+      = link_to 'つぶやく', new_tweet_path, class: "tweet"
