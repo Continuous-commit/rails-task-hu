@@ -11,7 +11,6 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    # redirect_to new_profile_path if current_user.profile.blank?
   end
 
   def create
@@ -25,6 +24,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = current_user.profile
+    
     if @profile.update(profile_params)
       redirect_to profile_path(current_user), notice: "プロフィールを更新しました"
     else 
