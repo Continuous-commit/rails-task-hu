@@ -1,0 +1,9 @@
+h4 ツイートを投稿する
+= form_with model: @tweet, local: true do |f|
+  .t-group 
+    = f.label :text
+    = f.text_area :text, maxlength: "140", placeholder: 'ツイートしてみよう！', class: "form-control", required: 'required'
+  .btn-space  
+    = f.submit 'ツイート', class: 'btn' 
+  .actions
+    = link_to '戻る', root_path, class: 'cancel-button'

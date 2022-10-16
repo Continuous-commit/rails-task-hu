@@ -1,0 +1,11 @@
+.content-wrapper
+  .content 
+    - if @tweets.any?
+      ul.tweets-list
+        - @tweets.each do |tweet|
+          li.media
+            .to-profile
+              h5.tweet-user
+                = link_to tweet.user.name, profile_path(tweet.user)
+            .tweet-text
+              = link_to simple_format(tweet.text), '#'
