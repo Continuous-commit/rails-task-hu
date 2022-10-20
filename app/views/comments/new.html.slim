@@ -1,0 +1,9 @@
+h4 コメントを投稿する
+= form_with model: @comment, local: true do |f|
+  .form-group 
+    = f.label :text
+    = f.text_area :text, maxlength: 140, placeholder: 'コメントを記入してみよう！', class: "form-control", required: 'required'
+  .btn-space  
+    = f.submit nil, class: 'btn'
+  .actions
+    = link_to '戻る', root_path, class: 'cancel-button'
