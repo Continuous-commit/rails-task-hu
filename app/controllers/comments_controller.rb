@@ -10,8 +10,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to tweet_path(@comment.tweet_id), notice: "コメントを投稿しました。"
     else
-      flash.now[:alert] = 'コメントの投稿に失敗しました'
-      render new_tweet_comment_path(@tweet_id)
+      redirect_to new_tweet_comment_path(@tweet_id), alert: "コメントの投稿に失敗しました。"
     end
   end
 

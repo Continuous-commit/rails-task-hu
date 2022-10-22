@@ -28,8 +28,18 @@
     display: flex;
     flex-flow: column;
     justify-content: center;
+    background-color: honeydew;
     width: 650px;
     margin-bottom: 8px;
+
+    .to-comment-text {
+      text-align: center;
+      margin-bottom: 15px;
+
+      .tweet-user {
+        font-size: 25px;
+      }
+    }
 
     .tweets-list {
       margin-top: 12px;
@@ -55,10 +65,6 @@
             opacity: 0.9;
             border-radius: 10px;
           }
-          
-          a {
-            padding: 5px;
-          }
         
           :hover {
             opacity: 1;
@@ -70,6 +76,65 @@
           font-size: 14.5px;
         }
       }   
+    }
+
+    .tweet-text2 {
+      margin-top: 12px;
+      width: 95%;
+      background-color: pink;
+      border: 0.5px solid;
+      border-radius: 2px;
+      display: flex;
+      justify-content: center;
+      margin: 6px;
+    }
+
+    .a-tweet {
+      margin-top: 12px;
+      list-style-type: none;
+
+      li {
+        width: 95%;
+        background-color: pink;
+        border: 0.5px solid;
+        border-radius: 2px;
+        text-align: center;
+        margin: 6px;
+
+        .to-tweet {
+          display: flex;
+          padding: 0 5px;
+        }
+      }
+    }
+    .comments-list {
+      margin-top: 12px;
+      list-style-type: none;
+
+      li {
+        width: 95%;
+        background-color: pink;
+        border: 0.5px solid;
+        border-radius: 2px;
+        text-align: center;
+        margin: 6px;
+
+        .to-profile {
+          display: flex;
+          padding: 0 5px;
+
+          .comment-user {
+            text-align: center;
+            background-color:greenyellow;
+            opacity: 0.9;
+            border-radius: 10px;
+          }
+        }
+      }
+    }
+    .comment-bar {
+      text-align: center;
+      margin: -30px auto;
     }
   }
 
