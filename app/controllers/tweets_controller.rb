@@ -1,11 +1,14 @@
 class TweetsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
+  before_action :find_tweet, only: [:show]
 
   def index
     @tweets = Tweet.all.order(created_at: "DESC")
   end
 
   def show
+    @user = @tweet.user
+    @comments = @tweet.comments.order('created_at DESC')
   end
 
   def new
@@ -23,6 +26,10 @@ class TweetsController < ApplicationController
   end
 
   private
+
+  def find_tweet
+    @tweet = Tweet.find(params[:id])
+  end
 
   def tweet_params
     params.require(:tweet).permit(:text)

@@ -15,7 +15,7 @@ nav.navbar-header
               h5.tweet-user
                 = link_to tweet.user.name, profile_path(tweet.user)
             .tweet-text
-              = link_to simple_format(tweet.text), '#'
+              = link_to simple_format(tweet.text), tweet_path(tweet.id)
 
   - if user_signed_in?
     .profile 
