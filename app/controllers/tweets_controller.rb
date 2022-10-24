@@ -28,7 +28,11 @@ class TweetsController < ApplicationController
   private
 
   def find_tweet
-    @tweet = Tweet.find(params[:id])
+    if Tweet.find_by(id: params[:id])
+      @tweet = Tweet.find(params[:id])
+    else
+      redirect_to root_path, notice: "ツイートが存在しません"
+    end
   end
 
   def tweet_params
