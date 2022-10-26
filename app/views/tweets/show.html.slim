@@ -1,2 +1,46 @@
-h1 Tweets#show
-p Find me in app/views/tweets/show.html.slim
+nav.navbar-header
+  h1 Happiness Chain
+
+.sub-bar
+  = link_to 'TOPページ', root_path, class: 'top-page'
+
+.content-wrapper
+  .content 
+    .to-comment-text 
+      .user-icon
+      | (仮)
+      .tweet-user
+        = link_to @tweet.user.name, profile_path(@tweet.user), class: "name"
+    ul.a-tweet 
+      li.media 
+        .to-tweet 
+          h6.comment-user
+            = link_to "ツイート", root_path
+        .tweet-text
+          = simple_format(@tweet.text)
+
+  - if user_signed_in?
+    .profile 
+      .prof_img
+      .user_name
+        = link_to current_user.name, profile_path(current_user), class: "name"
+      .btn-submit
+        = link_to 'コメントする！', new_tweet_comment_path(@tweet), class: 'post-link'
+  - else
+    .login-btn
+      = link_to 'ログイン', new_user_session_path, class: 'login-link'
+
+.content-wrapper
+  .content 
+    .comment-bar
+      h4 コメント一覧
+    - if @comments.any?
+      ul.comments-list
+        - @comments.each do |comment|
+          li.media
+            .to-profile
+              h5.comment-user
+                = link_to comment.user.name, profile_path(comment.user)
+            .tweet-text
+              = link_to simple_format(comment.text)
+
