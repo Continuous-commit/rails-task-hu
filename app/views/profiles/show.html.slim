@@ -1,3 +1,6 @@
+.sub-bar
+  = link_to 'TOPページ', root_path, class: 'top-page'
+  
 .content-wrapper2 
   .profile-show 
     .pr-img 
@@ -8,3 +11,4 @@
   .buttons
     = link_to '編集', edit_profile_path(current_user), class: 'btn edit'
     = link_to '退会', user_registration_path, method: :delete, data: { confirm: "アカウントを削除してもよろしいですか？" }, class: 'btn delete'
+
