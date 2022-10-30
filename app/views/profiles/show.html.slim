@@ -3,7 +3,10 @@
   
 .content-wrapper2 
   .profile-show 
-    .pr-img 
+    - if @user.image.attached?
+      = image_tag @user.image, class: 'pr-img'
+    - else 
+      = image_tag 'icon.jpg', class: 'pr-img'
     .pr-name
       = @user.name
     .pr-text

@@ -12,6 +12,10 @@ nav.navbar-header
         - @tweets.each do |tweet|
           li.media
             .to-profile
+              - if tweet.user.image.attached?
+                = image_tag tweet.user.image, class: 'pr-img'
+              - else 
+                = image_tag 'icon.jpg', class: 'pr-img'
               h5.tweet-user
                 = link_to tweet.user.name, profile_path(tweet.user)
             .tweet-text
@@ -19,7 +23,10 @@ nav.navbar-header
 
   - if user_signed_in?
     .profile 
-      .prof_img
+      - if current_user.image.attached?
+        = image_tag current_user.image, class: 'pr-img'
+      - else 
+        = image_tag 'icon.jpg', class: 'pr-img'
       .user_name
         = link_to current_user.name, profile_path(current_user), class: "name"
       .btn-submit
