@@ -23,10 +23,7 @@ nav.navbar-header
 
   - if user_signed_in?
     .profile 
-      - if current_user.image.attached?
-        = image_tag current_user.image, class: 'pr-img'
-      - else 
-        = image_tag 'icon.jpg', class: 'pr-img'
+      = render partial: 'shared/icon', locals: { user: current_user }
       .user_name
         = link_to current_user.name, profile_path(current_user), class: "name"
       .btn-submit
@@ -44,10 +41,7 @@ nav.navbar-header
         - @comments.each do |comment|
           li.media
             .to-profile
-              - if comment.user.image.attached?
-                = image_tag comment.user.image, class: 'pr-img'
-              - else 
-                = image_tag 'icon.jpg', class: 'pr-img'
+              = render partial: 'shared/icon', locals: { user: comment.user }
               h5.comment-user
                 = link_to comment.user.name, profile_path(comment.user)
             .tweet-text

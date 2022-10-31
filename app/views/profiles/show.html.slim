@@ -3,10 +3,7 @@
   
 .content-wrapper2 
   .profile-show 
-    - if @user.image.attached?
-      = image_tag @user.image, class: 'pr-img'
-    - else 
-      = image_tag 'icon.jpg', class: 'pr-img'
+    = render partial: 'shared/icon', locals: { user: @user }
     .pr-name
       = @user.name
     .pr-text
