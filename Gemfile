@@ -39,6 +39,7 @@ gem 'kaminari'
 gem 'annotate'
 
 gem "image_processing", ">= 1.2"
+gem 'activestorage-validator'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
