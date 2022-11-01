@@ -7,7 +7,7 @@
     = f.text_area :profile_text, class: "form-control"
   .form-group 
     = f.label :profile_image
-    = f.file_field :image, class: "form-control"
+    = f.file_field :image, class: "form-control", accept: 'image/jpg, image/jpeg, image/png, image/gif'
   .btn-space  
     = f.submit '保存', class: 'btn' 
 
