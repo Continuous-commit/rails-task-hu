@@ -3,7 +3,7 @@
   
 .content-wrapper2 
   .profile-show 
-    .pr-img 
+    = render partial: 'shared/icon', locals: { user: @user }
     .pr-name
       = @user.name
     .pr-text

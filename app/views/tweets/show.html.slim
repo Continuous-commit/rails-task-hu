@@ -7,8 +7,10 @@ nav.navbar-header
 .content-wrapper
   .content 
     .to-comment-text 
-      .user-icon
-      | (仮)
+      - if @tweet.user.image.attached?
+        = image_tag tweet.user.image, class: 'pr-img'
+      - else 
+        = image_tag 'icon.jpg', class: 'pr-img'
       .tweet-user
         = link_to @tweet.user.name, profile_path(@tweet.user), class: "name"
     ul.a-tweet 
@@ -21,7 +23,7 @@ nav.navbar-header
 
   - if user_signed_in?
     .profile 
-      .prof_img
+      = render partial: 'shared/icon', locals: { user: current_user }
       .user_name
         = link_to current_user.name, profile_path(current_user), class: "name"
       .btn-submit
@@ -39,6 +41,7 @@ nav.navbar-header
         - @comments.each do |comment|
           li.media
             .to-profile
+              = render partial: 'shared/icon', locals: { user: comment.user }
               h5.comment-user
                 = link_to comment.user.name, profile_path(comment.user)
             .tweet-text

@@ -27,6 +27,9 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :tweets, dependent: :destroy
   has_many :comments,  dependent: :destroy
+  has_one_attached :image
+
+  validates :image, blob: { content_type: :image }
 
   delegate :name, :profile_text, :image, to: :profile, allow_nil: true
 
