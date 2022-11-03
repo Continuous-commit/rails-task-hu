@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   
   root 'tweets#index'
-  devise_for :users, :controllers => { :registrations => "users/registrations" }
+  devise_for :users, :controllers => { 
+    :registrations => "users/registrations",
+    :omniauth_callbacks => "users/omniauth_callbacks"
+  }
+
   resources :profiles, only: [:show, :new, :edit, :create, :update]
   resources :tweets do
     resources :comments
