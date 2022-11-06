@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  root 'tweets#index'
   devise_for :users, :controllers => { 
     :registrations => "users/registrations",
     :omniauth_callbacks => "users/omniauth_callbacks"
@@ -10,6 +9,7 @@ Rails.application.routes.draw do
   resources :tweets do
     resources :comments
   end
+  root 'tweets#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

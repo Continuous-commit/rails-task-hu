@@ -42,7 +42,7 @@ gem "image_processing", ">= 1.2"
 gem 'activestorage-validator'
 
 gem 'omniauth-github'
-
+gem "omniauth-rails_csrf_protection"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
