@@ -30,7 +30,7 @@ class User < ApplicationRecord
   
   validates :email, presence: true, uniqueness: true
   # uidとproviderカラムの組み合わせを一意にする
-  validates :uid, uniqueness: { scope: :provider }
+  validates :uid, uniqueness: { scope: :provider }, if: -> { uid.present? }
 
   # authの中身はGitHubから送られてくる大きなハッシュ。この中に名前やメアドなどが入っている。
   # providerカラムとuidカラムが送られてきたデータと一致するユーザーを探す。
