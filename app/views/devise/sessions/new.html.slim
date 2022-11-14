@@ -20,8 +20,6 @@
       .actions
         = f.submit "ログイン", class: 'button'
         br
-        = link_to "Githubでサインイン", '#', class: 'github-button'
-        br 
         .sign-up 
           p ▼まだ会員登録してない方はこちらから新規登録▼
           = render "devise/shared/links", class: 'signup-button'
