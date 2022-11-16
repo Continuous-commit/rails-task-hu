@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  before_action :find_tweet, only: [:show]
+  before_action :find_tweet, only: [:show, :like_tweet]
 
   def index
     @tweets = Tweet.all.order(created_at: "DESC")
@@ -23,6 +23,10 @@ class TweetsController < ApplicationController
       flash.now[:alert] = 'ツイートの投稿に失敗しました'
       render new_tweet_path
     end
+  end
+
+  def like_tweet
+    like(@tweet)
   end
 
   private
