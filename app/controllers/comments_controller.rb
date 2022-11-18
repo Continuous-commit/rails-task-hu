@@ -19,6 +19,11 @@ class CommentsController < ApplicationController
     like(@comment)
   end
 
+  def unlike_comment
+    @comment = Comment.find(params[:id])
+    unlike(@comment)
+  end
+
   private
 
   def find_tweet_id

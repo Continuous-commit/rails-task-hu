@@ -12,3 +12,40 @@
     = link_to '編集', edit_profile_path(current_user), class: 'btn edit'
     = link_to '退会', user_registration_path, method: :delete, data: { confirm: "アカウントを削除してもよろしいですか？" }, class: 'btn delete'
 
+.content-wrapper2
+  .profile-show 
+    h4 いいねした投稿
+    - @posts.each do |post|
+      - if post.likable_type == "Tweet"
+        - tweet = Tweet.find(post.likable_id)
+        .content
+          .to-profile
+            = render partial: 'shared/icon', locals: { user: tweet.user }
+            h5.tweet-user
+              = link_to tweet.user.name, profile_path(tweet.user)
+          .tweet-text
+            = link_to simple_format(tweet.text), tweet_path(tweet.id)
+          h5.likes 
+            - if tweet.liked_by?(current_user)
+              = link_to '♥', unlike_tweet_path(tweet), method: :post
+            - else
+              = link_to '♡', like_tweet_path(tweet), method: :post
+          .like_count
+            .count= tweet.liked_count
+
+      - elsif post.likable_type == "Comment"
+        - comment = Comment.find(post.likable_id)
+        .content
+          .icon
+            = render partial: 'shared/icon', locals: { user: comment.user }
+            .icon_img
+            = link_to comment.user.name, profile_path(comment.user), class: "name"
+          .comment-text
+            = comment.text
+          h5.likes
+            - if comment.liked_by?(current_user)
+              = link_to '♥', unlike_comment_path(comment), method: :post
+            - else
+              = link_to '♡', like_comment_path(comment), method: :post
+          .like_count
+            .count= comment.liked_count
