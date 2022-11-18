@@ -5,17 +5,69 @@
   .content-wrapper2 {
 
     display: flex;
-    justify-content: center;
+    margin-left: 385px;
 
     .profile-show {
       display: flex;
       flex-flow: column;
       text-align: center;
       justify-content: center;
-      width: 40%;   // heightは設定しない
+      background-color: honeydew;
+      width: 60%;   // heightは設定しない
       border: 2px solid;
       border-radius: 10px;
       margin-top: 30px;
+      margin-bottom: 8px;
+
+      .like-bar {
+        margin-top: -25px;
+      }
+
+      .posts-list {
+        margin-top: -25px;
+        list-style-type: none;
+
+        li {
+          width: 95%;
+          background-color: pink;
+          border: 0.5px solid;
+          border-radius: 2px;
+          text-align: center;
+          margin: 6px;
+          display: flex;
+
+          .to-profile {
+            display: flex;
+            margin: 20px 0;
+
+            .pr-img {
+              width: 75px;
+              height: 75px;
+              border-radius: 50px;
+            }
+
+            .user {
+              width: auto;
+              height: auto;
+              text-align: center;
+
+              :hover {
+                text-decoration: underline;
+              }
+            }
+          }
+          .text {
+            margin: auto;
+            font-size: 16.0px;
+          }
+          .likes {
+            .like {
+              text-decoration: none;
+              color: red;
+            }
+          }
+        }
+      }
 
       .pr-img {
         width: 100px;
