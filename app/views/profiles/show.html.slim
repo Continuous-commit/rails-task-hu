@@ -19,7 +19,7 @@
     ul.posts-list
       - @posts.each do |post|
         - if post.likable_type == "Tweet"
-          - tweet = Tweet.find(post.likable_id)
+          - tweet = post.likable
           li.media
             .to-profile
               = render partial: 'shared/icon', locals: { user: tweet.user }
@@ -36,7 +36,7 @@
               .count= tweet.liked_count
 
         - elsif post.likable_type == "Comment"
-          - comment = Comment.find(post.likable_id)
+          - comment = post.likable
           li.media
             .to-profile 
               = render partial: 'shared/icon', locals: { user: comment.user }
