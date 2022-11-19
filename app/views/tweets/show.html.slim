@@ -7,10 +7,7 @@ nav.navbar-header
 .content-wrapper
   .content 
     .to-comment-text 
-      - if @tweet.user.image.attached?
-        = image_tag tweet.user.image, class: 'pr-img'
-      - else 
-        = image_tag 'icon.jpg', class: 'pr-img'
+      = render partial: 'shared/icon', locals: { user: @tweet.user }
       .tweet-user
         = link_to @tweet.user.name, profile_path(@tweet.user), class: "name"
     ul.a-tweet 
