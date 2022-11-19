@@ -15,4 +15,5 @@ module Liked
   def liked_by?(user)
     likes.where(user: user).present?
   end
+
 end

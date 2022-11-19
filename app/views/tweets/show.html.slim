@@ -48,7 +48,7 @@ nav.navbar-header
               = link_to simple_format(comment.text)
             h5.likes
               - if comment.liked_by?(current_user)
-                = link_to '♥', unlike_comment_path(comment), class: "like", method: :post
+                = link_to '♥', unlike_comment_path(comment), class: "like", method: :delete
               - else
                 = link_to '♡', like_comment_path(comment), class: "like", method: :post
             h5.count-likes
