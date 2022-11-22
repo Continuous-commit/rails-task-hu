@@ -88,6 +88,13 @@
           margin: auto;
           font-size: 16.0px;
         }
+
+        .likes {
+          .like {
+            text-decoration: none;
+            color: red;
+          }
+        }
       }   
     }
 
@@ -157,6 +164,12 @@
         .tweet-text {
           margin: auto;
           font-size: 16.0px;
+        }
+        .likes {
+          .like {
+            text-decoration: none;
+            color: red;
+          }
         }
       }
     }

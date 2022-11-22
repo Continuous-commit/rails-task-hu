@@ -14,6 +14,16 @@ class CommentsController < ApplicationController
     end
   end
 
+  def like_comment
+    @comment = Comment.find(params[:id])
+    like(@comment)
+  end
+
+  def unlike_comment
+    @comment = Comment.find(params[:id])
+    unlike(@comment)
+  end
+
   private
 
   def find_tweet_id

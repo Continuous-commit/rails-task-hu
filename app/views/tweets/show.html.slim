@@ -7,10 +7,7 @@ nav.navbar-header
 .content-wrapper
   .content 
     .to-comment-text 
-      - if @tweet.user.image.attached?
-        = image_tag tweet.user.image, class: 'pr-img'
-      - else 
-        = image_tag 'icon.jpg', class: 'pr-img'
+      = render partial: 'shared/icon', locals: { user: @tweet.user }
       .tweet-user
         = link_to @tweet.user.name, profile_path(@tweet.user), class: "name"
     ul.a-tweet 
@@ -46,4 +43,11 @@ nav.navbar-header
                 = link_to comment.user.name, profile_path(comment.user)
             .tweet-text
               = link_to simple_format(comment.text)
+            h5.likes
+              - if comment.liked_by?(current_user)
+                = link_to '♥', unlike_comment_path(comment), class: "like", method: :delete
+              - else
+                = link_to '♡', like_comment_path(comment), class: "like", method: :post
+            h5.count-likes
+              = comment.liked_count
 

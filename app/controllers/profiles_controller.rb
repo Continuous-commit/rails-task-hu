@@ -12,6 +12,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    @posts = @user.likes.order('created_at DESC')
   end
 
   def create

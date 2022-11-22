@@ -20,6 +20,9 @@
 class Profile < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  has_many :likes, as: :likable, dependent: :destroy
+
+  include Liked
 
   validates :name, presence: true
   validates :profile_text, presence: true
