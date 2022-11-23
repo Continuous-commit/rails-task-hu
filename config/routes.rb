@@ -9,6 +9,14 @@ Rails.application.routes.draw do
   resources :tweets do
     resources :comments, only: [:new, :create] 
   end
+  
+  # memberメソッドを利用すると、ユーザーidが含まれているURLを扱えるようになる。
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
   root 'tweets#index'
   post 'comments/:id/like', to: 'comments#like_comment', as: 'like_comment'
   delete 'comments/:id/unlike', to: 'comments#unlike_comment', as: 'unlike_comment'

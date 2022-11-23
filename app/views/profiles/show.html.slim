@@ -8,9 +8,18 @@
       = @user.name
     .pr-text
       p = @user.profile_text
-  .buttons
-    = link_to '編集', edit_profile_path(current_user), class: 'btn edit'
-    = link_to '退会', user_registration_path, method: :delete, data: { confirm: "アカウントを削除してもよろしいですか？" }, class: 'btn delete'
+  - if @user == current_user
+    .buttons
+      = link_to '編集', edit_profile_path(current_user), class: 'btn edit'
+      = link_to '退会', user_registration_path, method: :delete, data: { confirm: "アカウントを削除してもよろしいですか？" }, class: 'btn delete'
+  - else
+    - if current_user.following?(@user)
+      = form_with(model: current_user.active_relationships.find_by(follower_id: @user.id), html: { method: :delete }) do |f|
+        = f.submit 'フォロー解除', class: 'follow-button'
+    - else
+      = form_with(model: current_user.active_relationships.build) do |f|
+        = hidden_field_tag :follower_id, :value => @user.id
+        = f.submit 'フォロー', class: 'follow-button'
 
 .content-wrapper2 
   .profile-show 
