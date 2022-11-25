@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'searches/search'
   devise_for :users, controllers: { 
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
