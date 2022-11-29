@@ -27,4 +27,9 @@ class Comment < ApplicationRecord
   include Liked
 
   validates :text, length: { maximum: 140 }, presence: true
+
+  #検索機能
+  def self.looks(word)
+    @comment = Comment.where("text LIKE?", "%#{word}%")
+  end
 end

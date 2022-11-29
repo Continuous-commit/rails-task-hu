@@ -18,6 +18,22 @@
   }
 }
 
+.search-bar {
+  margin: 10px 550px;
+  text-align: left;
+
+  .search-form {
+    margin: 0 10px;
+  }
+
+  .search-button {
+    border: 1px solid;
+    border-radius: 16px;
+    padding: 2px;
+    margin-left: 10px;
+  }
+}
+
 .content-wrapper {
   display: flex;
   margin-left: 350px;

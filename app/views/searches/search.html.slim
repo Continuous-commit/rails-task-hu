@@ -1,2 +1,11 @@
-h1 Searches#search
-p Find me in app/views/searches/search.html.slim
+h4 検索結果一覧
+- if @range == "ツイート"
+  .content-wrapper
+    ul.tweets-list 
+      - @tweets.each do |tweet|
+        = render partial: 'tweets/tweet', locals: { tweet: tweet } 
+- elsif @range == "コメント"
+  .comment-wrapper 
+    ul.comment-contents
+      - @comments.each do |comment|
+        = render partial: 'comments/comment', locals: { comment: comment }

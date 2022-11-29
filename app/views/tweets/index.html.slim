@@ -4,26 +4,19 @@ nav.navbar-header
 - if user_signed_in?
   .logout-bar
     = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'logout-link'
+  
+  .search-bar
+    = form_with url: search_path, local: true, method: :get do |f|
+      = f.text_field :word, class: 'search-form', placeholder: '検索ワード'
+      = f.select :range, ['ツイート', 'コメント', '指定なし']
+      = f.submit '検索', class: 'search-button'
 
 .content-wrapper
   .content 
     - if @tweets.any?
       ul.tweets-list
         - @tweets.each do |tweet|
-          li.media
-            .to-profile
-              = render partial: 'shared/icon', locals: { user: tweet.user }
-              h5.tweet-user
-                = link_to tweet.user.name, profile_path(tweet.user)
-            .tweet-text
-              = link_to simple_format(tweet.text), tweet_path(tweet.id)
-            h5.likes
-              - if tweet.liked_by?(current_user)
-                = link_to '♥', unlike_tweet_path(tweet), class: "like", method: :delete
-              - else
-                = link_to '♡', like_tweet_path(tweet), class: "like", method: :post
-            h5.count-likes
-              = tweet.liked_count
+          = render partial: 'tweet', locals: { tweet: tweet }
 
   - if user_signed_in?
     .profile 
