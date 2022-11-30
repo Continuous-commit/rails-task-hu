@@ -31,8 +31,7 @@ nav.navbar-header
 
 .content-wrapper
   .content 
-    .comment-bar
-      h4 コメント一覧
+    h4 コメント一覧
     - if @comments.any?
       ul.comments-list
         - @comments.each do |comment|
