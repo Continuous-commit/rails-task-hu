@@ -2,23 +2,3 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.content-wrapper {
-  display: flex;
-  margin-left: 350px;
-
-  .content {
-    border: 1px solid ;
-    border-radius: 10px;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    background-color: honeydew;
-    width: 650px;
-    margin-bottom: 8px;
-
-    .lists {
-      margin-top: 12px;
-      list-style-type: none;
-    }
-  }
-}
