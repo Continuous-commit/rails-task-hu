@@ -14,6 +14,11 @@
 #  index_relationships_on_follower_id                  (follower_id)
 #  index_relationships_on_follower_id_and_followed_id  (follower_id,followed_id) UNIQUE
 #
+# Foreign Keys
+#
+#  followed_id  (followed_id => users.id)
+#  follower_id  (follower_id => users.id)
+#
 class Relationship < ApplicationRecord
   belongs_to :follower, class_name: 'User'
   belongs_to :followed, class_name: 'User'
