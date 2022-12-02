@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:new, :create, :like_tweet, :unlike_tweet]
   before_action :find_tweet, only: [:show, :like_tweet, :unlike_tweet]
 
   def index
