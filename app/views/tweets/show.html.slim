@@ -31,23 +31,9 @@ nav.navbar-header
 
 .content-wrapper
   .content 
-    .comment-bar
-      h4 コメント一覧
+    h4 コメント一覧
     - if @comments.any?
       ul.comments-list
         - @comments.each do |comment|
-          li.media
-            .to-profile
-              = render partial: 'shared/icon', locals: { user: comment.user }
-              h5.comment-user
-                = link_to comment.user.name, profile_path(comment.user)
-            .tweet-text
-              = link_to simple_format(comment.text)
-            h5.likes
-              - if comment.liked_by?(current_user)
-                = link_to '♥', unlike_comment_path(comment), class: "like", method: :delete
-              - else
-                = link_to '♡', like_comment_path(comment), class: "like", method: :post
-            h5.count-likes
-              = comment.liked_count
+          = render partial: 'comments/comment', locals: { comment: comment }
 

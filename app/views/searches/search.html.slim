@@ -1,0 +1,13 @@
+h4 検索結果一覧
+- if @range == "ツイート"
+  .content-wrapper
+    .content 
+      ul.tweets-list
+        - @tweets.each do |tweet|
+          = render partial: 'tweets/tweet', locals: { tweet: tweet } 
+- elsif @range == "コメント"
+  .content-wrapper
+    .content 
+      ul.comments-list 
+        - @comments.each do |comment|
+          = render partial: 'comments/comment', locals: { comment: comment }

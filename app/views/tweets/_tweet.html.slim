@@ -1,0 +1,14 @@
+li.media
+  .to-profile
+    = render partial: 'shared/icon', locals: { user: tweet.user }
+    h5.tweet-user
+      = link_to tweet.user.name, profile_path(tweet.user)
+  .tweet-text
+    = link_to simple_format(tweet.text), tweet_path(tweet.id)
+  h5.likes
+    - if tweet.liked_by?(current_user)
+      = link_to '♥', unlike_tweet_path(tweet), class: "like", method: :delete
+    - else
+      = link_to '♡', like_tweet_path(tweet), class: "like", method: :post
+  h5.count-likes
+    = tweet.liked_count
