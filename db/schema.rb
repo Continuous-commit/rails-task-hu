@@ -12,17 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2022_11_23_013527) do
 
-  create_table "active_storage_attachments", force: :cascade do |t|
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(version: 2022_11_23_013527) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "tweet_id", null: false
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "tweet_id", null: false
     t.string "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 2022_11_23_013527) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.integer "user_id", null: false
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "likable_type"
-    t.integer "likable_id"
+    t.bigint "likable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id"
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 2022_11_23_013527) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "profiles", force: :cascade do |t|
-    t.integer "user_id", null: false
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "name", null: false
     t.text "profile_text"
     t.datetime "created_at", precision: 6, null: false
@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(version: 2022_11_23_013527) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id", null: false
-    t.integer "followed_id", null: false
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "follower_id", null: false
+    t.bigint "followed_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
@@ -73,24 +73,24 @@ ActiveRecord::Schema.define(version: 2022_11_23_013527) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
-  create_table "tweets", force: :cascade do |t|
-    t.integer "user_id", null: false
+  create_table "tweets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
+    t.datetime "deleted_at"
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
-    t.datetime "deleted_at"
     t.string "uid"
     t.string "provider", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
