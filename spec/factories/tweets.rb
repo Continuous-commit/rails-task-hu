@@ -2,11 +2,11 @@
 #
 # Table name: tweets
 #
-#  id         :integer          not null, primary key
-#  text       :string           not null
+#  id         :bigint           not null, primary key
+#  text       :string(255)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :integer          not null
+#  user_id    :bigint           not null
 #
 # Indexes
 #
@@ -14,7 +14,7 @@
 #
 # Foreign Keys
 #
-#  user_id  (user_id => users.id)
+#  fk_rails_...  (user_id => users.id)
 #
 FactoryBot.define do
   factory :tweet do

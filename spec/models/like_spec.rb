@@ -2,12 +2,12 @@
 #
 # Table name: likes
 #
-#  id           :integer          not null, primary key
-#  likable_type :string
+#  id           :bigint           not null, primary key
+#  likable_type :string(255)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  likable_id   :integer
-#  user_id      :integer          not null
+#  likable_id   :bigint
+#  user_id      :bigint           not null
 #
 # Indexes
 #
@@ -17,7 +17,7 @@
 #
 # Foreign Keys
 #
-#  user_id  (user_id => users.id)
+#  fk_rails_...  (user_id => users.id)
 #
 require 'rails_helper'
 

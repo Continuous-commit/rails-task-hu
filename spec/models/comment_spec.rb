@@ -2,12 +2,12 @@
 #
 # Table name: comments
 #
-#  id         :integer          not null, primary key
-#  text       :string           not null
+#  id         :bigint           not null, primary key
+#  text       :string(255)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  tweet_id   :integer          not null
-#  user_id    :integer          not null
+#  tweet_id   :bigint           not null
+#  user_id    :bigint           not null
 #
 # Indexes
 #
@@ -16,8 +16,8 @@
 #
 # Foreign Keys
 #
-#  tweet_id  (tweet_id => tweets.id)
-#  user_id   (user_id => users.id)
+#  fk_rails_...  (tweet_id => tweets.id)
+#  fk_rails_...  (user_id => users.id)
 #
 require 'rails_helper'
 
