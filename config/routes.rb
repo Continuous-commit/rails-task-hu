@@ -1,22 +1,23 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  
-  devise_for :users, controllers: { 
-    registrations: "users/registrations",
-    omniauth_callbacks: "users/omniauth_callbacks"
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  resources :profiles, only: [:show, :new, :edit, :create, :update]
+  resources :profiles, only: %i[show new edit create update]
   resources :tweets do
-    resources :comments, only: [:new, :create] 
+    resources :comments, only: %i[new create]
   end
-  
+
   # memberメソッドを利用すると、ユーザーidが含まれているURLを扱えるようになる。
   resources :users do
     member do
       get :following, :followers
     end
   end
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: %i[create destroy]
   root 'tweets#index'
 
   post 'comments/:id/like', to: 'comments#like_comment', as: 'like_comment'

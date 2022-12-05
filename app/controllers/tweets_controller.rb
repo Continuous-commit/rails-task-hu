@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class TweetsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :like_tweet, :unlike_tweet]
-  before_action :find_tweet, only: [:show, :like_tweet, :unlike_tweet]
+  before_action :authenticate_user!, only: %i[new create like_tweet unlike_tweet]
+  before_action :find_tweet, only: %i[show like_tweet unlike_tweet]
 
   def index
     @tweets = if user_signed_in?
@@ -23,7 +25,7 @@ class TweetsController < ApplicationController
   def create
     @tweet = current_user.tweets.build(tweet_params)
     if @tweet.save
-      redirect_to root_path, notice: "ツイートを作成しました"
+      redirect_to root_path, notice: 'ツイートを作成しました'
     else
       flash.now[:alert] = 'ツイートの投稿に失敗しました'
       render new_tweet_path
@@ -42,7 +44,7 @@ class TweetsController < ApplicationController
 
   def find_tweet
     @tweet = Tweet.find_by(id: params[:id])
-    redirect_to root_path, notice: "ツイートが存在しません" if @tweet.blank?
+    redirect_to root_path, notice: 'ツイートが存在しません' if @tweet.blank?
   end
 
   def tweet_params

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -12,7 +14,7 @@ module App
     config.load_defaults 6.0
 
     config.i18n.default_locale = :ja
-    config.generators.template_engine = :slim 
+    config.generators.template_engine = :slim
     config.time_zone = 'Tokyo'
 
     # Settings in config/environments/* take precedence over those specified here.

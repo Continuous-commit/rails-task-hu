@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: tweets
@@ -25,8 +27,8 @@ class Tweet < ApplicationRecord
 
   validates :text, length: { maximum: 140 }, presence: true
 
-  #検索機能
+  # 検索機能
   def self.looks(word)
-    @tweet = Tweet.where("text LIKE?", "%#{word}%")
+    @tweet = Tweet.where('text LIKE?', "%#{word}%")
   end
 end

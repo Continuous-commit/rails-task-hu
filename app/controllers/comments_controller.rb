@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_tweet_id
@@ -9,9 +11,9 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     if @comment.save
-      redirect_to tweet_path(@tweet_id), notice: "コメントを投稿しました。"
+      redirect_to tweet_path(@tweet_id), notice: 'コメントを投稿しました。'
     else
-      redirect_to new_tweet_comment_path(@tweet_id), alert: "コメントの投稿に失敗しました。"
+      redirect_to new_tweet_comment_path(@tweet_id), alert: 'コメントの投稿に失敗しました。'
     end
   end
 
@@ -35,5 +37,3 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:tweet_id, :text)
   end
 end
-
-

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: comments
@@ -23,6 +25,6 @@ FactoryBot.define do
   factory :comment do
     user { nil }
     tweet { nil }
-    text { "MyString" }
+    text { 'MyString' }
   end
 end
