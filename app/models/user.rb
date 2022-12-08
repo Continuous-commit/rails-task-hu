@@ -72,7 +72,7 @@ class User < ApplicationRecord
 
   # 削除したユーザーにカスタムメッセージを追加します
   def inactive_message
-    !deleted_at ? super : :deleted_account
+    deleted_at ? :deleted_account : super
   end
 
   # ユーザーをフォローする
