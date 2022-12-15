@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -27,7 +29,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:github]
-  
+
   validates :email, presence: true, uniqueness: true
   # uidとproviderカラムの組み合わせを一意にする
   validates :uid, uniqueness: { scope: :provider }, if: -> { uid.present? }
@@ -37,14 +39,14 @@ class User < ApplicationRecord
   # もしユーザーが見つからない場合は新規作成する。
   def self.find_for_github_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
-      # 名前を取得するときはこのように書く（今回はUserモデルにname属性がないのでエラーなる） 
+      # 名前を取得するときはこのように書く（今回はUserモデルにname属性がないのでエラーなる）
       # user.name = auth.info.name
       user.email = auth.info.email
       # 任意の20文字の文字列を作成する
       user.password = Devise.friendly_token[0, 20]
     end
   end
-  
+
   has_one :profile, dependent: :destroy
   has_many :tweets, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -59,19 +61,19 @@ class User < ApplicationRecord
   delegate :name, :profile_text, :image, to: :profile, allow_nil: true
 
   # 物理削除の代わりにユーザーの`deleted_at`をタイムスタンプで更新
-  def soft_delete  
-    update_attribute(:deleted_at, Time.current)  
+  def soft_delete
+    update_attribute(:deleted_at, Time.current)
   end
 
-  # ユーザーのアカウントが有効であることを確認 
-  def active_for_authentication?  
-    super && !deleted_at  
-  end  
+  # ユーザーのアカウントが有効であることを確認
+  def active_for_authentication?
+    super && !deleted_at
+  end
 
-  # 削除したユーザーにカスタムメッセージを追加します  
-  def inactive_message   
-    !deleted_at ? super : :deleted_account  
-  end 
+  # 削除したユーザーにカスタムメッセージを追加します
+  def inactive_message
+    deleted_at ? :deleted_account : super
+  end
 
   # ユーザーをフォローする
   def follow(other_user)
@@ -87,5 +89,4 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
-
 end

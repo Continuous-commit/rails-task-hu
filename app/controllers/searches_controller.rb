@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 class SearchesController < ApplicationController
   def search
     @range = params[:range]
 
-    if @range == "ツイート"
+    case @range
+    when 'ツイート'
       @tweets = Tweet.looks(params[:word])
-    elsif @range == "コメント"
+    when 'コメント'
       @comments = Comment.looks(params[:word])
     else
       @tweets = Tweet.looks(params[:word])

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Liked
   def liked_by(user)
     likes.where(user: user).first_or_create
@@ -15,5 +17,4 @@ module Liked
   def liked_by?(user)
     likes.where(user: user).present?
   end
-
 end

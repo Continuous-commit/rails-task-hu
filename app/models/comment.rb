@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: comments
@@ -28,8 +30,8 @@ class Comment < ApplicationRecord
 
   validates :text, length: { maximum: 140 }, presence: true
 
-  #検索機能
+  # 検索機能
   def self.looks(word)
-    @comment = Comment.where("text LIKE?", "%#{word}%")
+    @comment = Comment.where('text LIKE?', "%#{word}%")
   end
 end
