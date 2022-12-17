@@ -26,5 +26,31 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
+
+  # 正常系
+  describe 'positive for signup' do
+    # ユーザ名・メールアドレス・パスワードが存在すれば有効であること
+    it 'is valid with a name, an email and password' do
+      user = FactoryBot.build(:user)
+      expect(user).to be_valid
+    end
+  end
+
+  # 異常系
+  describe 'type invalid' do
+    # メールアドレスがなければ無効な状態であること
+    it "is invalid without an email address" do
+      user = FactoryBot.build(:user, email: nil)
+      user.valid?
+      expect(user.errors[:email]).to include("を入力してください")
+    end
+
+    # 重複したメールアドレスなら無効な状態であること
+    it "is invalid with a duplicate email address" do
+      FactoryBot.create(:user)
+      user = FactoryBot.build(:user)
+      user.valid?
+      expect(user.errors[:email]).to include("はすでに存在します")
+    end
+  end
 end
