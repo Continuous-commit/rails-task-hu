@@ -21,8 +21,8 @@
 #
 FactoryBot.define do
   factory :profile do
-    user { nil }
     name { 'テストくん' }
-    profile_text { 'MyText' }
+    profile_text { 'This is the test' }
+    association :user
   end
 end
