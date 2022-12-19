@@ -22,7 +22,7 @@
 FactoryBot.define do
   factory :profile do
     user { nil }
-    name { 'MyString' }
+    name { 'テストくん' }
     profile_text { 'MyText' }
   end
 end
