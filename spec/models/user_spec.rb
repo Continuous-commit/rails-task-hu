@@ -29,7 +29,7 @@ RSpec.describe User, type: :model do
   # 正常系
   describe 'positive for signup' do
     it 'ユーザ名・メールアドレス・パスワードが存在すれば有効であること' do
-      user = FactoryBot.build(:user, email: "user@example.com", password: "password")
+      user = FactoryBot.build(:user, email: 'user@example.com', password: 'password')
       expect(user).to be_valid
     end
   end
@@ -43,8 +43,8 @@ RSpec.describe User, type: :model do
     end
 
     it '重複したメールアドレスなら無効な状態であること' do
-      FactoryBot.create(:user, email: "user@example.com")
-      user = FactoryBot.build(:user, email: "user@example.com")
+      FactoryBot.create(:user, email: 'user@example.com')
+      user = FactoryBot.build(:user, email: 'user@example.com')
       user.valid?
       expect(user.errors[:email]).to include('はすでに存在します')
     end
