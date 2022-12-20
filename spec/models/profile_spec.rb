@@ -29,13 +29,28 @@ RSpec.describe Profile, type: :model do
   # 正常系
   describe 'type valid' do
     it '名前とプロフィール文とプロフィール画像があり、Userと紐づいている' do
-      @profile.image = fixture_file_upload("/files/test.jpg")
+      @profile.image = fixture_file_upload('/files/test.jpg')
       expect(@profile).to be_valid
     end
-  
+
     it 'プロフィール画像がない場合はデフォルトの画像' do
       @profile.save
-      expect(@profile.image).not_to eq nil 
+      expect(@profile.image).not_to eq nil
+    end
+  end
+
+  # 異常系
+  describe 'type invalid' do
+    it '名前がない' do
+      @profile.update(name: nil)
+      @profile.valid?
+      expect(@profile.errors[:name]).to include('を入力してください')
+    end
+
+    it 'プロフィール文がない' do
+      @profile.update(profile_text: nil)
+      @profile.valid?
+      expect(@profile.errors[:profile_text]).to include('を入力してください')
     end
   end
 end
