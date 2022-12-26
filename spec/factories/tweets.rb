@@ -20,7 +20,7 @@
 #
 FactoryBot.define do
   factory :tweet do
-    user { nil }
-    text { 'MyString' }
+    text {"test tweet"}
+    association :user
   end
 end
