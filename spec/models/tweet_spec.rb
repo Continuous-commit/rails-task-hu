@@ -21,7 +21,7 @@
 require 'rails_helper'
 
 RSpec.describe Tweet, type: :model do
-  let(:tweet) {FactoryBot.build(:tweet, text: 'test tweet')}
+  let(:tweet) { FactoryBot.build(:tweet, text: 'test tweet') }
 
   # 正常系
   describe 'type valid' do
@@ -42,20 +42,19 @@ RSpec.describe Tweet, type: :model do
     it 'ツイートが空' do
       tweet.update(text: nil)
       tweet.save
-      expect(tweet.errors[:text]).to include("を入力してください")
+      expect(tweet.errors[:text]).to include('を入力してください')
     end
 
     it 'ユーザーが紐づいていいない' do
       tweet = FactoryBot.build(:tweet, user: nil)
       tweet.save
-      expect(tweet.errors[:user]).to include("を入力してください") 
+      expect(tweet.errors[:user]).to include('を入力してください')
     end
 
     it '140文字以上のツイート' do
-      tweet.update(text: "a" * 141)
+      tweet.update(text: 'a' * 141)
       tweet.save
-      expect(tweet.errors[:text]).to include("は140文字以内で入力してください")
+      expect(tweet.errors[:text]).to include('は140文字以内で入力してください')
     end
-
   end
 end
