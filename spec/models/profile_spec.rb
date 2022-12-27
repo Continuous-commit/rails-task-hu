@@ -22,9 +22,7 @@
 require 'rails_helper'
 
 RSpec.describe Profile, type: :model do
-
-  let(:profile) {FactoryBot.build(:profile, name: 'テストくん', profile_text: 'This is the test')}
-  
+  let(:profile) { FactoryBot.build(:profile, name: 'テストくん', profile_text: 'This is the test') }
 
   # 正常系
   describe 'type valid' do
